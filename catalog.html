@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог квартир — Уютный Дом</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Уютный Дом</a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Главная</a>
+        <a href="catalog.html" class="nav-link active">Каталог</a>
+        <a href="contact.html" class="nav-link">Контакты</a>
+      </nav>
+      <button class="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-inner">
+      <button type="button" class="mobile-menu-close" id="mobile-menu-close" aria-label="Закрыть меню">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+      <nav class="mobile-menu-nav" id="mobile-menu-nav">
+        <!-- Ссылки навигации будут скопированы из основного меню в main.js -->
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title animate-on-scroll">Каталог квартир</h1>
+        <p class="page-subtitle animate-on-scroll">Посуточно и длительно. Выберите город и тип аренды.</p>
+      </div>
+    </section>
+
+    <section class="catalog-section">
+      <div class="container">
+        <div class="filters animate-on-scroll">
+          <span class="filter-label">Город:</span>
+          <div class="filter-group" id="filter-city">
+            <button type="button" class="filter-btn active" data-filter="all">Все города</button>
+            <button type="button" class="filter-btn" data-filter="moscow">Москва</button>
+            <button type="button" class="filter-btn" data-filter="piter">Питер</button>
+            <button type="button" class="filter-btn" data-filter="sochi">Сочи</button>
+          </div>
+        </div>
+        <div class="filters animate-on-scroll">
+          <span class="filter-label">Тип аренды:</span>
+          <div class="filter-group" id="filter-type">
+            <button type="button" class="filter-btn active" data-filter="all">Все</button>
+            <button type="button" class="filter-btn" data-filter="daily">Посуточно</button>
+            <button type="button" class="filter-btn" data-filter="long">Длительно</button>
+          </div>
+        </div>
+
+        <div class="cards-grid" id="catalog-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <button type="button" class="modal-close" id="modal-close" aria-label="Закрыть">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <h2 class="modal-title">Оставить заявку</h2>
+      <p class="apartment-meta" id="modal-apartment-info" style="margin-bottom: 16px; display: none;"></p>
+      <form id="modal-form">
+        <input type="hidden" id="modal-apartment-id" name="apartmentId" value="">
+        <input type="hidden" id="modal-apartment-title" name="apartmentTitle" value="">
+        <div class="form-group modal-period-block" id="modal-period-block" style="display: none;">
+          <div id="modal-period-days-block" style="display: none;">
+            <label for="modal-period-days">Срок аренды (ночей)</label>
+            <select id="modal-period-days" class="form-select"></select>
+          </div>
+          <div id="modal-period-months-block" style="display: none;">
+            <label for="modal-period-months">Срок аренды (месяцев)</label>
+            <select id="modal-period-months" class="form-select"></select>
+          </div>
+          <p class="modal-price-per" style="margin: 12px 0 4px; font-size: 0.9375rem; color: var(--color-text-muted);">Цена: <span id="modal-price-per"></span></p>
+          <p class="modal-total-line" style="margin: 0 0 16px; font-size: 1.125rem; font-weight: 600; color: var(--color-accent);">Итого: <strong id="modal-total"></strong></p>
+        </div>
+        <div class="form-group">
+          <label for="modal-name">Имя *</label>
+          <input type="text" id="modal-name" name="name" required placeholder="Как к вам обращаться">
+        </div>
+        <div class="form-group">
+          <label for="modal-phone">Телефон *</label>
+          <input type="tel" id="modal-phone" name="phone" required placeholder="+7 (___) ___-__-__">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Отправить заявку</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">Уютный Дом</a>
+        <p>Квартиры посуточно и длительно. Комфорт и прозрачность.</p>
+      </div>
+      <div class="footer-contact">
+        <a href="tel:88005553535">8 800 555-35-35</a>
+        <a href="mailto:hello@uyutny-dom.ru">hello@uyutny-dom.ru</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">© 2026 Уютный Дом</div>
+    </div>
+  </footer>
+
+  <script src="js/apartments-data.js"></script>
+  <script src="js/telegram-config.js"></script>
+  <script src="js/telegram.js"></script>
+  <script src="js/modal-request.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/catalog.js"></script>
+</body>
+</html>
+
